@@ -16,3 +16,6 @@ app:
       - http://localhost:5173
       - https://localhost:3000
       - https://localhost:5173
+      - https://monitoreo-de-microservicios-fronen.vercel.app
+    allowed-origin-patterns:
+      - https://monitoreo-de-microservicios-fronen*.vercel.app
