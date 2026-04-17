@@ -10,6 +10,7 @@ import com.revelosn.proxymonitoring.proxy.ProxyExecutionResult;
 import com.revelosn.proxymonitoring.repository.InventoryRepository;
 import com.revelosn.proxymonitoring.repository.OrderRepository;
 import com.revelosn.proxymonitoring.repository.PaymentRepository;
+import com.revelosn.proxymonitoring.util.CompatibleRandomGeneratorFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,7 @@ public class LoadSimulationService {
     private final OrderRepository orderRepository;
     private final PaymentRepository paymentRepository;
     private final Clock clock;
-    private final RandomGenerator randomGenerator = RandomGenerator.getDefault();
+    private final RandomGenerator randomGenerator = CompatibleRandomGeneratorFactory.create();
 
     public LoadSimulationService(@Qualifier("inventoryProxy") MicroserviceProxy<ProxyExecutionResult<Object>> inventoryProxy,
                                  @Qualifier("ordersProxy") MicroserviceProxy<ProxyExecutionResult<Object>> ordersProxy,

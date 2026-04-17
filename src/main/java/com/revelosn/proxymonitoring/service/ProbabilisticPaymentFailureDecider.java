@@ -1,5 +1,6 @@
 package com.revelosn.proxymonitoring.service;
 
+import com.revelosn.proxymonitoring.util.CompatibleRandomGeneratorFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.random.RandomGenerator;
@@ -12,7 +13,7 @@ public class ProbabilisticPaymentFailureDecider implements PaymentFailureDecider
     private final RandomGenerator randomGenerator;
 
     public ProbabilisticPaymentFailureDecider() {
-        this(RandomGenerator.getDefault());
+        this(CompatibleRandomGeneratorFactory.create());
     }
 
     ProbabilisticPaymentFailureDecider(RandomGenerator randomGenerator) {
@@ -24,4 +25,3 @@ public class ProbabilisticPaymentFailureDecider implements PaymentFailureDecider
         return randomGenerator.nextDouble() < FAILURE_RATE;
     }
 }
-
